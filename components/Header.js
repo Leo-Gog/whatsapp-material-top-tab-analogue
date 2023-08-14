@@ -1,7 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
+import { useContext } from 'react';
+import { TabContext } from '../context';
 
 export default function Header() {
+    const [tab,] = useContext(TabContext)
     return (
         <View style={styles.container}>
             <View>
@@ -9,7 +12,7 @@ export default function Header() {
             </View>
             <View style={{flexDirection: 'row'}}>
                 <MaterialCommunityIcons name="camera-outline" size={24} color="#fff" style={styles.icon}/>
-                <MaterialIcons name="search" size={24} color="#fff"  style={styles.icon}/>
+                {tab !== 'Groups' ? <MaterialIcons name="search" size={24} color="#fff"  style={styles.icon}/>: null}
                 <MaterialCommunityIcons name="dots-vertical" size={24} color="#fff"  style={styles.icon}/>
             </View>
         </View>
