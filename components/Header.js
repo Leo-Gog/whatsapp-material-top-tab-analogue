@@ -2,18 +2,18 @@ import { StyleSheet, Text, View } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
 
 export default function Header() {
-  return (
-    <View style={styles.container}>
-        <View>
-            <Text style={styles.logo}>WhatsApp</Text>
+    return (
+        <View style={styles.container}>
+            <View>
+                <Text style={styles.logo}>WhatsApp</Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+                <MaterialCommunityIcons name="camera-outline" size={24} color="#fff" style={styles.icon}/>
+                <MaterialIcons name="search" size={24} color="#fff"  style={styles.icon}/>
+                <MaterialCommunityIcons name="dots-vertical" size={24} color="#fff"  style={styles.icon}/>
+            </View>
         </View>
-        <View style={{flexDirection: 'row'}}>
-            <MaterialCommunityIcons name="camera-outline" size={24} color="#fff" style={styles.icon}/>
-            <MaterialIcons name="search" size={24} color="#fff"  style={styles.icon}/>
-            <MaterialCommunityIcons name="dots-vertical" size={24} color="#fff"  style={styles.icon}/>
-        </View>
-    </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
     },
     logo: {
         color: "#fff",
-        fontSize:20
+        fontSize:20,
     },
     icon: {
-        marginLeft: 25
+        marginLeft: 20
     },
 });

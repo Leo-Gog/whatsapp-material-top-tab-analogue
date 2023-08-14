@@ -7,26 +7,25 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
-const Tab = createMaterialTopTabNavigator();
-
 export default function Tabs() {
-  const groupsIcon = (focused) => (
-    <MaterialCommunityIcons
-      name="account-group"
-      size={25}
-      style={focused ? styles.tab : { color: "rgba(255, 255, 255, 0.5)" }}
-    />
-  );
-  const tab = (text, focused) => (
-    <Text
+  const Tab = createMaterialTopTabNavigator();
+  
+  const tab = (text, focused) => (text !== 'Groups' ? 
+    (<Text
       style={[
         focused ? { color: "rgba(255, 255, 255, 1)" } : styles.tab,
-        { fontSize: 15 },
+        { fontSize: 15, fontWeight: 500, paddingHorizontal: 26},
       ]}
     >
       {text}
-    </Text>
+    </Text>) :
+    (<MaterialCommunityIcons
+      name="account-group"
+      size={25}
+      style={[focused ? styles.tab : { color: "rgba(255, 255, 255, 0.5)", paddingHorizontal: 0}]}
+    />)
   );
+
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -34,13 +33,14 @@ export default function Tabs() {
           tabBarStyle: { backgroundColor: "#128C7E" },
           tabBarActiveTintColor: "white",
           tabBarIndicatorStyle: { backgroundColor: "white" },
+          tabBarItemStyle: {width: 'auto'}
         }}
       >
         <Tab.Screen
-          name={"Groups"}
+          name="Groups"
           component={GroupsScreen}
           options={{
-            title: ({ focused }) => groupsIcon(focused),
+            title: ({ focused }) => tab('Groups', focused),
           }}
         />
         <Tab.Screen
